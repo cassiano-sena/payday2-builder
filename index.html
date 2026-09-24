@@ -41,12 +41,24 @@
                 <button class="loadout-slot compact-slot" data-target-section="melee" type="button"><span class="slot-index">06 / MELEE</span><strong id="melee-name">SELECT MELEE</strong><i>OPEN</i></button>
                 <button class="loadout-slot compact-slot" data-target-section="throwables" type="button"><span class="slot-index">07 / THROWABLE</span><strong id="throwable-name">SELECT THROWABLE</strong><i>OPEN</i></button>
               </div>
+              <div class="card build-tools">
+                <div class="section-label">BUILD TOOLS <span>IMPORT / EXPORT / RESET</span></div>
+                <div class="build-tool-row">
+                  <button id="export-build-btn" class="tool-button" type="button">Export build</button>
+                  <button id="import-build-btn" class="tool-button" type="button">Import build</button>
+                  <button id="reset-build-btn" class="tool-button warning" type="button">Reset build</button>
+                  <button id="reset-attachments-btn" class="tool-button subtle" type="button">Reset attachments</button>
+                  <button id="reset-skills-btn" class="tool-button subtle" type="button">Reset skills</button>
+                  <button id="reset-equipment-btn" class="tool-button subtle" type="button">Reset equipment</button>
+                </div>
+                <textarea id="build-json-output" rows="4" placeholder="Paste build JSON here to import..."></textarea>
+              </div>
               <div class="card source-panel"><div class="section-label">BUILD SOURCES <span id="source-count">LIVE</span></div><div id="overview-sources" class="source-grid"></div></div>
             </div>
           </div>
         </section>
 
-        <section id="weapons" class="panel"><header class="panel-header"><div><p class="eyebrow">INVENTORY / WEAPONS</p><h2>PRIMARY &amp; SECONDARY</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div class="weapon-workbench"><div class="weapon-browser card"><div class="browser-tabs"><span class="section-label">WEAPON CATALOG</span><label class="mode-select">PRIMARY <select id="primary-select"></select></label><label class="mode-select">SECONDARY <select id="secondary-select"></select></label></div><div id="weapon-grid" class="weapon-grid"></div></div><div id="weapon-detail" class="weapon-inspector card"></div></div></section>
+        <section id="weapons" class="panel"><header class="panel-header"><div><p class="eyebrow">INVENTORY / WEAPONS</p><h2>PRIMARY &amp; SECONDARY</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div class="weapon-workbench"><div class="weapon-browser card"><div class="browser-tabs"><div class="weapon-toolbar"><div class="slot-mode-toggle"><button type="button" class="slot-mode-button active" data-weapon-slot-toggle="primary">Primary</button><button type="button" class="slot-mode-button" data-weapon-slot-toggle="secondary">Secondary</button></div><div id="weapon-category-tabs" class="category-tabs"></div></div><div class="browser-selects"><span class="section-label">WEAPON CATALOG</span><label class="mode-select">PRIMARY <select id="primary-select"></select></label><label class="mode-select">SECONDARY <select id="secondary-select"></select></label></div></div><div id="weapon-grid" class="weapon-grid"></div></div><div id="weapon-detail" class="weapon-inspector card"></div></div></section>
 
         <section id="skills" class="panel"><header class="panel-header"><div><p class="eyebrow">INVENTORY / SKILLS</p><h2>SKILL TREES</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div id="skill-grid"></div></section>
         <section id="perks" class="panel"><header class="panel-header"><div><p class="eyebrow">INVENTORY / PERK DECKS</p><h2>PERK DECK INVENTORY</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div id="perk-grid" class="perk-inventory"></div><div id="perk-detail" class="card detail-panel"></div></section>
