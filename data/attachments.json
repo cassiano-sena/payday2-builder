@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "source": "Editable MVP dataset; values are placeholders for calculator wiring.",
+  "updatedAt": "2026-09-23",
+  "attachments": [
+    {"id": "short-barrel", "name": "Short Barrel", "category": "barrel", "slot": "barrel", "statModifiers": {"concealment": 3, "accuracy": -4, "threat": -2}, "efficiency": "Concealment tradeoff", "compatibleWeaponIds": ["amcar", "m4", "glock"], "description": "Reduces profile while sacrificing precision."},
+    {"id": "precision-barrel", "name": "Precision Barrel", "category": "barrel", "slot": "barrel", "statModifiers": {"damage": 4, "accuracy": 7, "concealment": -4}, "efficiency": "Damage and accuracy", "compatibleWeaponIds": ["m308", "deagle"], "description": "Improves long-range control at a concealment cost."},
+    {"id": "compact-sight", "name": "Compact Sight", "category": "sight", "slot": "sight", "statModifiers": {"accuracy": 5, "concealment": 1}, "efficiency": "Low-cost precision", "compatibleWeaponIds": ["amcar", "m4", "m308", "deagle", "glock"], "description": "A small sight with a modest accuracy gain."},
+    {"id": "angled-grip", "name": "Angled Grip", "category": "grip", "slot": "grip", "statModifiers": {"stability": 8, "accuracy": 2}, "efficiency": "Sustained control", "compatibleWeaponIds": ["amcar", "m4", "m308"], "description": "Improves stability during automatic fire."}
+  ]
+}

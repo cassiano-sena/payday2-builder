@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "source": "Editable MVP dataset; values are placeholders and need_review.",
+  "items": [
+    {"id":"frag-grenade","name":"Frag Grenade","category":"throwable","tags":["loud","area_damage"],"description":"Area damage throwable.","effects":[{"stat":"damage","operation":"add","value":5}],"dataStatus":"placeholder"},
+    {"id":"concussion-grenade","name":"Concussion Grenade","category":"throwable","tags":["control","loud"],"description":"Temporary crowd-control option.","effects":[{"stat":"threat","operation":"add","value":4}],"dataStatus":"placeholder"},
+    {"id":"throwing-knife","name":"Throwing Knife","category":"throwable","tags":["stealth","concealable"],"description":"Quiet precision throwable.","effects":[{"stat":"concealment","operation":"add","value":3}],"dataStatus":"placeholder"}
+  ]
+}

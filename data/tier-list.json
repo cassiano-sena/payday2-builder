@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "source": "Editable community-style MVP ranking; verify against the target game version and preferred playstyle.",
+  "updatedAt": "2026-09-23",
+  "tiers": [
+    {
+      "id": "weapons",
+      "name": "Weapons",
+      "entries": [
+        {"id": "ak17", "itemId": "ak17", "name": "AK17", "tier": "S", "category": "weapon", "role": "Assault rifle", "reason": "Excellent damage, stability, and flexible loud-build performance. It is a strong general-purpose primary.", "tags": ["loud", "damage", "mid_range"], "dataStatus": "placeholder"},
+        {"id": "minigun", "itemId": "minigun", "name": "Minigun", "tier": "D", "category": "weapon", "role": "Heavy weapon", "reason": "Very niche: high sustained fire does not compensate for poor mobility, concealment, and build flexibility in most heists.", "tags": ["niche", "loud", "sustain"], "dataStatus": "needs_review"}
+      ]
+    },
+    {
+      "id": "attachments",
+      "name": "Attachments",
+      "entries": [
+        {"id": "rami-suppressor", "itemId": "rami-suppressor", "name": "Rami Suppressor", "tier": "S", "category": "attachment", "role": "Suppressor", "reason": "Strong stealth utility when concealment and threat control matter, especially on compact weapons.", "tags": ["stealth", "concealment", "threat"], "dataStatus": "placeholder"}
+      ]
+    },
+    {
+      "id": "ammo",
+      "name": "Ammunition",
+      "entries": [
+        {"id": "explosive-ammo", "itemId": "explosive-ammo", "name": "Explosive Ammunition", "tier": "B", "category": "equipment", "role": "Specialized ammo", "reason": "Niche utility: valuable for crowd control and shields, but its tradeoffs make it weaker as a universal choice.", "tags": ["niche", "crowd_control", "special"], "dataStatus": "placeholder"}
+      ]
+    },
+    {
+      "id": "skills",
+      "name": "Skills",
+      "entries": [
+        {"id": "joker-basic", "itemId": "joker", "name": "Joker", "tier": "S", "variant": "basic", "category": "skill", "role": "Control and support", "reason": "Converts an enemy into a durable ally and creates strong tempo and survivability value for the crew.", "tags": ["support", "control", "team"], "dataStatus": "placeholder"},
+        {"id": "joker-aced", "itemId": "joker", "name": "Joker", "tier": "S", "variant": "aced", "category": "skill", "role": "Control and support", "reason": "The aced version extends the value of controlled enemies and is a premium team-support investment when the build can afford it.", "tags": ["support", "control", "team"], "dataStatus": "placeholder"},
+        {"id": "scavenger-basic", "itemId": "scavenger", "name": "Scavenger", "tier": "S", "variant": "basic", "category": "skill", "role": "Ammo sustain", "reason": "Improves ammunition pickup consistency and supports aggressive builds that depend on continuous fire.", "tags": ["ammo", "sustain", "loud"], "dataStatus": "placeholder"},
+        {"id": "scavenger-aced", "itemId": "scavenger", "name": "Scavenger", "tier": "S", "variant": "aced", "category": "skill", "role": "Ammo sustain", "reason": "The aced version makes ammo sustain more reliable and is especially valuable for high-RPM weapons.", "tags": ["ammo", "sustain", "loud"], "dataStatus": "placeholder"},
+        {"id": "messiah-basic", "itemId": "messiah", "name": "Messiah", "tier": "D", "variant": "basic", "category": "skill", "role": "Down recovery", "reason": "Highly conditional recovery value and a steep opportunity cost make it unreliable for most builds.", "tags": ["niche", "recovery", "high_risk"], "dataStatus": "needs_review"},
+        {"id": "messiah-aced", "itemId": "messiah", "name": "Messiah", "tier": "D", "variant": "aced", "category": "skill", "role": "Down recovery", "reason": "The aced version remains highly situational and depends on a narrow recovery scenario rather than improving the core game plan.", "tags": ["niche", "recovery", "high_risk"], "dataStatus": "needs_review"}
+      ]
+    }
+  ]
+}

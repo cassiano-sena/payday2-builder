@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "Editable MVP dataset; values are placeholders and need_review.",
+  "items": [
+    {"id":"utility-knife","name":"Utility Knife","category":"melee","tags":["concealable","fast"],"description":"Compact close-range tool.","effects":[{"stat":"concealment","operation":"add","value":2}],"dataStatus":"placeholder"},
+    {"id":"baseball-bat","name":"Baseball Bat","category":"melee","tags":["loud","impact"],"description":"Heavy impact melee option.","effects":[{"stat":"threat","operation":"add","value":6}],"dataStatus":"placeholder"}
+  ]
+}

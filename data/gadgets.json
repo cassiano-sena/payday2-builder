@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "source": "Editable MVP dataset; values are placeholders and need_review.",
+  "items": [
+    {"id":"ammo-bag","name":"Ammo Bag","category":"deployable","tags":["loud","sustain"],"description":"Deployable ammunition reserve.","effects":[{"stat":"ammo","operation":"add","value":10}],"dataStatus":"placeholder"},
+    {"id":"ecm-jammer","name":"ECM Jammer","category":"deployable","tags":["stealth","control"],"description":"Temporary electronic disruption tool.","effects":[{"stat":"concealment","operation":"add","value":4}],"dataStatus":"placeholder"},
+    {"id":"medic-bag","name":"Doctor Bag","category":"deployable","tags":["loud","survival"],"description":"Deployable recovery support.","effects":[{"stat":"health","operation":"add","value":10}],"dataStatus":"placeholder"}
+  ]
+}
