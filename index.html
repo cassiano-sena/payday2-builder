@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Payday 2 Build Planner</title>
     <link rel="stylesheet" href="styles.css" />
+  
+    <style>
+      .skill-tier { display: grid; gap: 8px; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }
+      .skill-tier.tier-1 { border-bottom: none; }
+      .skill-tier.tier-4, .skill-tier.tier-1 { grid-template-columns: 1fr; }
+      .skill-tier.tier-3, .skill-tier.tier-2 { grid-template-columns: 1fr 1fr; }
+      .skill-node { min-height: 80px; align-items: center; justify-content: center; text-align: center; }
+      .skill-icon { font-size: 1.5rem; margin-bottom: 4px; }
+      .branch-heading { text-align: center; border-bottom: none; border-top: 2px solid var(--accent); padding-top: 9px; margin-top: 10px; }
+      .tier-column { flex-direction: column !important; }
+      .skill-node.state-locked { opacity: 0.3; cursor: not-allowed; }
+      .skill-node.state-aced { border-color: var(--accent); box-shadow: inset 0 0 10px var(--accent-3); }
+      .skill-node.state-basic { border-color: var(--accent); }
+    </style>
   </head>
   <body>
     <div id="app-error" class="error-banner" hidden role="alert"></div>
@@ -13,17 +27,19 @@
         <div class="brand"><span class="logo">P2</span><div><h1>BUILD PLANNER</h1><small id="data-status">LOADING CATALOGS...</small></div></div>
         <nav class="nav" aria-label="Main navigation">
           <button class="nav-item active" data-section="overview">Inventory</button>
+          <button class="nav-item" data-section="player-data">Player Data</button>
           <button class="nav-item" data-section="weapons">Weapons</button>
           <button class="nav-item" data-section="skills">Skills</button>
           <button class="nav-item" data-section="perks">Perk Decks</button>
           <button class="nav-item" data-section="gadgets">Gadgets</button>
           <button class="nav-item" data-section="melee">Melee</button>
           <button class="nav-item" data-section="throwables">Throwables</button>
+          <button class="nav-item" data-section="armors">Armor</button>
           <button class="nav-item" data-section="heists">Heists</button>
           <button class="nav-item" data-section="optimizer">Optimizer</button>
           <button class="nav-item" data-section="tier-list">Tier List</button>
         </nav>
-        <p class="sidebar-note">DATA-DRIVEN LOADOUT<br /><span>EDITABLE MVP CATALOG</span></p>
+        <p class="sidebar-note">DATA-DRIVEN LOADOUT<br /><span>POWERED BY GAME_DATA.JSON</span></p>
       </aside>
       <main class="content">
         <section id="overview" class="panel active">
@@ -34,12 +50,13 @@
               <div class="loadout-title"><span class="section-label">EQUIPMENT SLOTS</span><span class="muted">SELECT A SLOT TO INSPECT</span></div>
               <div class="loadout-grid">
                 <button class="loadout-slot slot-primary" data-target-section="weapons" data-weapon-slot="primary" type="button"><span class="slot-index">01 / PRIMARY</span><strong id="primary-name">AMCAR</strong><small id="primary-summary">WEAPON</small><i>OPEN</i></button>
-                <button class="loadout-slot slot-secondary" data-target-section="weapons" data-weapon-slot="secondary" type="button"><span class="slot-index">02 / SECONDARY</span><strong id="secondary-name">DEAGLE</strong><small id="secondary-summary">WEAPON</small><i>OPEN</i></button>
-                <button class="loadout-slot" data-target-section="skills" type="button"><span class="slot-index">03 / SKILLS</span><strong>SKILL TREES</strong><small id="skill-summary">NO SKILLS SELECTED</small><i>OPEN</i></button>
+                <button class="loadout-slot" data-target-section="skills" type="button"><span class="slot-index">02 / SKILLS</span><strong>SKILL TREES</strong><small id="skill-summary">NO SKILLS SELECTED</small><i>OPEN</i></button>
+                <button class="loadout-slot slot-secondary" data-target-section="weapons" data-weapon-slot="secondary" type="button"><span class="slot-index">03 / SECONDARY</span><strong id="secondary-name">DEAGLE</strong><small id="secondary-summary">WEAPON</small><i>OPEN</i></button>
                 <button class="loadout-slot" data-target-section="perks" type="button"><span class="slot-index">04 / PERK DECK</span><strong id="perk-name">CREW CHIEF</strong><small id="perk-summary">SUPPORT</small><i>OPEN</i></button>
-                <button class="loadout-slot compact-slot" data-target-section="gadgets" type="button"><span class="slot-index">05 / GADGET</span><strong id="gadget-name">SELECT GADGET</strong><i>OPEN</i></button>
-                <button class="loadout-slot compact-slot" data-target-section="melee" type="button"><span class="slot-index">06 / MELEE</span><strong id="melee-name">SELECT MELEE</strong><i>OPEN</i></button>
-                <button class="loadout-slot compact-slot" data-target-section="throwables" type="button"><span class="slot-index">07 / THROWABLE</span><strong id="throwable-name">SELECT THROWABLE</strong><i>OPEN</i></button>
+                <button class="loadout-slot compact-slot" data-target-section="throwables" type="button"><span class="slot-index">05 / THROWABLE</span><strong id="throwable-name">SELECT THROWABLE</strong><i>OPEN</i></button>
+                <div class="gadget-loadout-group"><span class="slot-index">06 / GADGET SLOTS</span><div class="gadget-loadout-pair"><button class="gadget-loadout-half" data-target-section="gadgets" data-gadget-slot="0" type="button"><strong id="gadget-name">SELECT GADGET</strong><small>GADGET 1</small></button><button id="gadget-overview-secondary" class="gadget-loadout-half" data-target-section="gadgets" data-gadget-slot="1" type="button" disabled><strong id="gadget-secondary-name">LOCKED / JACK OF ALL TRADES ACED</strong><small>GADGET 2</small></button></div></div>
+                <button class="loadout-slot compact-slot" data-target-section="armors" type="button"><span class="slot-index">07 / ARMOR</span><strong id="armor-name">TWO-PIECE SUIT</strong><small id="armor-summary">20 ARMOR</small><i>OPEN</i></button>
+                <button class="loadout-slot compact-slot" data-target-section="melee" type="button"><span class="slot-index">08 / MELEE</span><strong id="melee-name">SELECT MELEE</strong><i>OPEN</i></button>
               </div>
               <div class="card build-tools">
                 <div class="section-label">BUILD TOOLS <span>IMPORT / EXPORT / RESET</span></div>
@@ -53,18 +70,29 @@
                 </div>
                 <textarea id="build-json-output" rows="4" placeholder="Paste build JSON here to import..."></textarea>
               </div>
+              <div class="card build-tools">
+                <div class="section-label">AUTO-OPTIMIZER <span>GENERATE LOADOUT</span></div>
+                <div class="build-tool-row">
+                  <label>Role <select id="auto-opt-role"><option value="sniper">Sniper</option><option value="assault">Assault</option><option value="stealth">Stealth</option></select></label>
+                  <label>Focus <select id="auto-opt-focus"><option value="dps">Max DPS</option><option value="survival">Survival</option><option value="speed">Speed & Dodge</option></select></label>
+                  <button id="auto-optimize-btn" class="tool-button primary-button" type="button">OPTIMIZE BUILD</button>
+                </div>
+              </div>
               <div class="card source-panel"><div class="section-label">BUILD SOURCES <span id="source-count">LIVE</span></div><div id="overview-sources" class="source-grid"></div></div>
             </div>
           </div>
         </section>
 
-        <section id="weapons" class="panel"><header class="panel-header"><div><p class="eyebrow">INVENTORY / WEAPONS</p><h2>PRIMARY &amp; SECONDARY</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div class="weapon-workbench"><div class="weapon-browser card"><div class="browser-tabs"><div class="weapon-toolbar"><div class="slot-mode-toggle"><button type="button" class="slot-mode-button active" data-weapon-slot-toggle="primary">Primary</button><button type="button" class="slot-mode-button" data-weapon-slot-toggle="secondary">Secondary</button></div><div id="weapon-category-tabs" class="category-tabs"></div></div><div class="browser-selects"><span class="section-label">WEAPON CATALOG</span><label class="mode-select">PRIMARY <select id="primary-select"></select></label><label class="mode-select">SECONDARY <select id="secondary-select"></select></label></div></div><div id="weapon-grid" class="weapon-grid"></div></div><div id="weapon-detail" class="weapon-inspector card"></div></div></section>
+        <section id="player-data" class="panel"><header class="panel-header"><div><p class="eyebrow">PLAYER SAVE / PROFILES</p><h2>PLAYER DATA</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div class="player-data-tools card"><label>SKILL PROFILE<select id="player-profile-select"></select></label><label>LOAD ANOTHER PLAYER JSON<input id="player-data-file" type="file" accept=".json,application/json" /></label><button id="apply-player-loadout-btn" class="primary-button" type="button">APPLY EQUIPPED WEAPONS</button></div><p class="source-note">Raw player skills are shown from the selected profile. The current calculator only applies curated skill effects; unlocalized game upgrade values are not guessed.</p><div id="player-data-summary" class="card player-data-summary"></div><p id="player-data-notice" class="interaction-notice"></p></section>
 
-        <section id="skills" class="panel"><header class="panel-header"><div><p class="eyebrow">INVENTORY / SKILLS</p><h2>SKILL TREES</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div id="skill-grid"></div></section>
+        <section id="weapons" class="panel"><header class="panel-header"><div><p class="eyebrow">INVENTORY / WEAPONS</p><h2>PRIMARY &amp; SECONDARY</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div class="weapon-workbench"><div class="weapon-browser card"><div class="browser-tabs"><div class="weapon-toolbar"><div class="slot-mode-toggle"><button type="button" class="slot-mode-button active" data-weapon-slot-toggle="primary">Primary</button><button type="button" class="slot-mode-button" data-weapon-slot-toggle="secondary">Secondary</button></div><div id="weapon-category-tabs" class="category-tabs"></div></div><div class="browser-selects"><span class="section-label">WEAPON CATALOG</span><label class="mode-select">PRIMARY <select id="primary-select"></select></label><label class="mode-select">SECONDARY <select id="secondary-select"></select></label></div></div><div id="weapon-grid" class="weapon-grid"></div></div><div><div id="weapon-detail" class="weapon-inspector card"></div><div id="game-weapon-data" class="card game-weapon-data"></div></div></div></section>
+
+        <section id="skills" class="panel"><header class="panel-header"><div><p class="eyebrow">INVENTORY / SKILLS</p><h2>SKILL TREES</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><p class="source-note">Select Basic/Aced on the real game tree. Jack of All Trades Aced unlocks the second gadget slot; effects and skill-point costs remain uncalculated where source localization is missing.</p><div id="skill-grid"></div></section>
         <section id="perks" class="panel"><header class="panel-header"><div><p class="eyebrow">INVENTORY / PERK DECKS</p><h2>PERK DECK INVENTORY</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div id="perk-grid" class="perk-inventory"></div><div id="perk-detail" class="card detail-panel"></div></section>
-        <section id="gadgets" class="panel"><header class="panel-header"><div><p class="eyebrow">INVENTORY / EQUIPMENT</p><h2>GADGETS</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div id="gadget-grid" class="card-grid"></div><div id="gadget-detail" class="card detail-panel"></div></section>
-        <section id="melee" class="panel"><header class="panel-header"><div><p class="eyebrow">INVENTORY / EQUIPMENT</p><h2>MELEE</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div id="melee-grid" class="card-grid"></div><div id="melee-detail" class="card detail-panel"></div></section>
-        <section id="throwables" class="panel"><header class="panel-header"><div><p class="eyebrow">INVENTORY / EQUIPMENT</p><h2>THROWABLES</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div id="throwable-grid" class="card-grid"></div><div id="throwable-detail" class="card detail-panel"></div></section>
+        <section id="gadgets" class="panel"><header class="panel-header"><div><p class="eyebrow">INVENTORY / EQUIPMENT</p><h2>GADGETS</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div class="gadget-slot-controls"><button id="gadget-slot-primary" class="tab-button active" type="button" data-gadget-slot-select="0">GADGET 1</button><button id="gadget-slot-secondary" class="tab-button" type="button" data-gadget-slot-select="1" disabled>GADGET 2 / JACK OF ALL TRADES ACED</button><span id="gadget-slot-status" class="source-note"></span></div><div class="weapon-workbench"><div class="weapon-browser card"><div class="browser-tabs"><div class="weapon-toolbar"><span class="section-label">GADGET INVENTORY</span><div id="gadgets-category-tabs" class="category-tabs"></div></div><div class="browser-selects"><label class="mode-select">SELECT GADGET <select id="gadgets-select"></select></label></div></div><div id="gadget-grid" class="weapon-grid"></div></div><div id="gadget-detail" class="weapon-inspector card"></div></div></section>
+        <section id="melee" class="panel"><header class="panel-header"><div><p class="eyebrow">INVENTORY / EQUIPMENT</p><h2>MELEE</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div class="weapon-workbench"><div class="weapon-browser card"><div class="browser-tabs"><div class="weapon-toolbar"><span class="section-label">MELEE INVENTORY</span><div id="melee-category-tabs" class="category-tabs"></div></div><div class="browser-selects"><label class="mode-select">SELECT MELEE <select id="melee-select"></select></label></div></div><div id="melee-grid" class="weapon-grid"></div></div><div id="melee-detail" class="weapon-inspector card"></div></div></section>
+        <section id="throwables" class="panel"><header class="panel-header"><div><p class="eyebrow">INVENTORY / EQUIPMENT</p><h2>THROWABLES</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div class="weapon-workbench"><div class="weapon-browser card"><div class="browser-tabs"><div class="weapon-toolbar"><span class="section-label">THROWABLE INVENTORY</span><div id="throwables-category-tabs" class="category-tabs"></div></div><div class="browser-selects"><label class="mode-select">SELECT THROWABLE <select id="throwables-select"></select></label></div></div><div id="throwable-grid" class="weapon-grid"></div></div><div id="throwable-detail" class="weapon-inspector card"></div></div></section>
+        <section id="armors" class="panel"><header class="panel-header"><div><p class="eyebrow">INVENTORY / PLAYER GEAR</p><h2>ARMOR</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div class="weapon-workbench"><div class="weapon-browser card"><div class="browser-tabs"><div class="weapon-toolbar"><span class="section-label">ARMOR INVENTORY</span><div id="armors-category-tabs" class="category-tabs"></div></div><div class="browser-selects"><label class="mode-select">SELECT ARMOR <select id="armors-select"></select></label></div></div><div id="armor-grid" class="weapon-grid"></div></div><div id="armor-detail" class="weapon-inspector card"></div></div></section>
         <section id="heists" class="panel"><header class="panel-header"><div><p class="eyebrow">CRIME.NET / HEISTS</p><h2>HEIST PROFILES</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div id="heist-grid" class="card-grid"></div><div id="heist-detail" class="card detail-panel"></div></section>
         <section id="optimizer" class="panel"><header class="panel-header"><div><p class="eyebrow">BUILD LAB</p><h2>OPTIMIZER</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div class="optimizer-controls"><label>HEIST<select id="optimizer-heist"></select></label><label>PLAYSTYLE<select id="optimizer-style"><option value="stealth">Stealth</option><option value="loud">Loud</option><option value="solo">Solo</option><option value="farm">Farm</option><option value="anti-dozer">Anti Dozer</option></select></label><label>PURPOSE<select id="optimizer-purpose"><option value="overall">Best overall</option><option value="damage">Highest damage</option><option value="concealment">Highest concealment</option><option value="sustain">Ammo and survivability</option></select></label><button id="optimize-btn" class="primary-button" type="button">GENERATE RECOMMENDATION</button></div><div id="optimizer-result" class="card detail-panel"></div></section>
         <section id="tier-list" class="panel"><header class="panel-header"><div><p class="eyebrow">REFERENCE / META</p><h2>TIER LIST</h2></div><button class="back-button" data-target-section="overview" type="button">&larr; BACK TO INVENTORY</button></header><div class="tier-controls"><label>CATEGORY<select id="tier-category-filter"><option value="all">All categories</option></select></label><label>SKILL VERSION<select id="tier-variant-filter"><option value="all">Base and aced</option><option value="basic">Base only</option><option value="aced">Aced only</option></select></label></div><div id="tier-list-grid" class="tier-list-grid"></div><p class="source-note tier-note">Rankings are editable guidance, not an official game ranking. Values marked for review should be verified against the target game version.</p></section>
@@ -115,7 +143,7 @@
               <p class="eyebrow">Build Summary</p>
               <h2>Current Loadout</h2>
             </div>
-            <span class="build-id">MVP / DATA-DRIVEN</span>
+            <span class="build-id">GAME_DATA / DATA-DRIVEN</span>
           </header>
 
           <div class="stats-grid">

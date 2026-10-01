@@ -1,9 +1,117 @@
 {
   "schemaVersion": 1,
-  "source": "Editable MVP dataset; values are placeholders and need_review.",
+  "source": "Generated MVP dataset based on Payday 2 wiki.",
   "items": [
-    {"id":"ammo-bag","name":"Ammo Bag","category":"deployable","tags":["loud","sustain"],"description":"Deployable ammunition reserve.","effects":[{"stat":"ammo","operation":"add","value":10}],"dataStatus":"placeholder"},
-    {"id":"ecm-jammer","name":"ECM Jammer","category":"deployable","tags":["stealth","control"],"description":"Temporary electronic disruption tool.","effects":[{"stat":"concealment","operation":"add","value":4}],"dataStatus":"placeholder"},
-    {"id":"medic-bag","name":"Doctor Bag","category":"deployable","tags":["loud","survival"],"description":"Deployable recovery support.","effects":[{"stat":"health","operation":"add","value":10}],"dataStatus":"placeholder"}
+    {
+      "id": "ammo-bag",
+      "name": "Ammo Bag",
+      "category": "deployable",
+      "tags": [
+        "loud",
+        "sustain"
+      ],
+      "description": "Restores ammunition.",
+      "effects": [
+        {
+          "stat": "ammo",
+          "operation": "add",
+          "value": 10
+        }
+      ]
+    },
+    {
+      "id": "medic-bag",
+      "name": "Doctor Bag",
+      "category": "deployable",
+      "tags": [
+        "loud",
+        "survival"
+      ],
+      "description": "Restores health and downs.",
+      "effects": [
+        {
+          "stat": "health",
+          "operation": "add",
+          "value": 10
+        }
+      ]
+    },
+    {
+      "id": "first-aid-kit",
+      "name": "First Aid Kit",
+      "category": "deployable",
+      "tags": [
+        "loud",
+        "survival"
+      ],
+      "description": "Quickly restores health."
+    },
+    {
+      "id": "ecm-jammer",
+      "name": "ECM Jammer",
+      "category": "deployable",
+      "tags": [
+        "stealth",
+        "control"
+      ],
+      "description": "Blocks pagers and cameras.",
+      "effects": [
+        {
+          "stat": "concealment",
+          "operation": "add",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "id": "body-bag-case",
+      "name": "Body Bag Case",
+      "category": "deployable",
+      "tags": [
+        "stealth",
+        "utility"
+      ],
+      "description": "Provides extra body bags."
+    },
+    {
+      "id": "trip-mine",
+      "name": "Trip Mine",
+      "category": "deployable",
+      "tags": [
+        "loud",
+        "utility"
+      ],
+      "description": "Explosive trap or sensor."
+    },
+    {
+      "id": "sentry-gun",
+      "name": "Sentry Gun",
+      "category": "deployable",
+      "tags": [
+        "loud",
+        "defense"
+      ],
+      "description": "Automated turret."
+    },
+    {
+      "id": "suppressed-sentry",
+      "name": "Suppressed Sentry",
+      "category": "deployable",
+      "tags": [
+        "stealth",
+        "defense"
+      ],
+      "description": "Silent automated turret."
+    },
+    {
+      "id": "armor-bag",
+      "name": "Armor Bag",
+      "category": "deployable",
+      "tags": [
+        "stealth",
+        "utility"
+      ],
+      "description": "Allows equipping armor mid-heist."
+    }
   ]
 }

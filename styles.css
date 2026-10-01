@@ -715,3 +715,67 @@ body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opa
 .detail-panel { padding: 16px; } .cyan-pill { color: var(--accent); border-color: rgba(56,216,235,.4); background: rgba(56,216,235,.1); } .effect-strip { margin-top: 12px; }
 @media (max-width: 900px) { .app-shell { grid-template-columns: 1fr; } .sidebar { border-right: 0; border-bottom: 1px solid var(--border); } .sidebar-note { display: none; } .nav { display: grid; grid-template-columns: repeat(5, 1fr); } .inventory-layout, .weapon-workbench { grid-template-columns: 1fr; } .status-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 14px; } .status-panel .section-label, .budget-strip { grid-column: 1 / -1; } .skill-tree { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .nav { grid-template-columns: repeat(2, 1fr); } .loadout-grid { grid-template-columns: 1fr; } .loadout-slot, .slot-primary, .slot-secondary { min-height: 125px; } .status-list { grid-template-columns: 1fr 1fr; } .perk-row { grid-template-columns: 1fr; } .perk-cards { grid-template-columns: repeat(3, minmax(82px, 1fr)); } .panel-header { display: block; } .header-readout { margin-top: 12px; text-align: left; } .browser-tabs .mode-select { margin-left: 0; width: 100%; } }
+.player-data-tools { display: grid; grid-template-columns: minmax(150px, .7fr) minmax(220px, 1fr) auto; align-items: end; gap: 14px; margin-bottom: 12px; }
+.player-data-tools label, .raw-search { display: grid; gap: 7px; color: var(--muted); font-size: .65rem; text-transform: uppercase; }
+.player-data-tools input, .player-data-tools select, .raw-search input { width: 100%; min-width: 0; border: 1px solid var(--border); border-radius: 1px; padding: 9px; background: #0a1822; color: var(--text); }
+.player-data-summary { margin-top: 16px; }
+.player-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.player-facts > div, .player-equipped > div { display: grid; gap: 6px; min-width: 0; padding: 12px; border: 1px solid var(--border); background: rgba(6, 15, 23, .65); }
+.player-facts span, .player-equipped span { color: var(--accent-3); font-size: .58rem; }
+.player-facts strong, .player-equipped strong { overflow-wrap: anywhere; font-size: .82rem; }
+.player-equipped { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 10px; }
+.player-equipped small, .player-skills li span { color: var(--muted); font-size: .62rem; overflow-wrap: anywhere; }
+.player-skills { margin-top: 16px; }
+.player-skills ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; max-height: 360px; overflow: auto; list-style: none; padding: 0; }
+.player-skills li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid rgba(66, 98, 116, .3); padding: 7px 0; }
+.player-skills li strong { font-size: .68rem; }
+.game-weapon-data { margin-top: 12px; padding: 14px; }
+.raw-stat-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 6px; }
+.raw-stat-list > div, .raw-skill-list > div { display: grid; gap: 5px; min-width: 0; padding: 9px; border: 1px solid rgba(66, 98, 116, .45); background: rgba(6, 15, 23, .65); }
+.raw-stat-list span, .raw-skill-list span { color: var(--muted); font-size: .58rem; overflow-wrap: anywhere; }
+.raw-stat-list strong { font-size: .78rem; }
+.game-skill-reference { margin-top: 18px; border: 1px solid var(--border); background: rgba(13, 24, 34, .7); }
+.game-skill-reference summary { padding: 13px; color: var(--accent); cursor: pointer; font-size: .68rem; letter-spacing: .1em; }
+.raw-search { margin: 0 13px 12px; max-width: 400px; }
+.raw-skill-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 6px; max-height: 440px; overflow: auto; padding: 0 13px 13px; }
+.gadget-loadout-group { min-width: 0; min-height: 100px; display: grid; grid-template-rows: auto 1fr; gap: 7px; padding: 10px; border: 1px solid var(--border); background: linear-gradient(135deg, rgba(19,39,52,.94), rgba(7,16,24,.94)); }
+.gadget-loadout-pair { min-height: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.gadget-loadout-half { min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 7px; padding: 8px; border: 1px solid rgba(66,98,116,.55); background: rgba(6,15,23,.72); color: var(--text); cursor: pointer; }
+.gadget-loadout-half:hover:not(:disabled) { border-color: var(--accent); background: rgba(29,68,79,.65); }
+.gadget-loadout-half strong { overflow-wrap: anywhere; font-size: .67rem; text-align: center; }
+.gadget-loadout-half small { color: var(--accent-3); font-size: .56rem; text-align: center; }
+.gadget-loadout-half:disabled { cursor: not-allowed; opacity: .48; }
+.loadout-slot[data-target-section="skills"], .loadout-slot[data-target-section="perks"] { min-height: 190px; }
+.loadout-slot:disabled { cursor: not-allowed; opacity: .52; filter: grayscale(.5); }
+.loadout-slot:disabled:hover { transform: none; border-color: var(--border); background: linear-gradient(135deg, rgba(19,39,52,.94), rgba(7,16,24,.94)); }
+.game-tree-toolbar { padding: 14px; border: 1px solid var(--border); background: var(--panel); }
+.game-tree-tabs { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+.game-tree-tabs button, .game-skill-levels button { border: 1px solid var(--border); background: #0a1822; color: var(--muted); padding: 7px 9px; font-size: .62rem; text-transform: uppercase; cursor: pointer; }
+.game-tree-tabs button.active, .game-skill-levels button.active { border-color: var(--accent); color: var(--text); background: rgba(56,216,235,.12); }
+.game-tree-controls { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 15px; }
+.game-tree-controls strong { color: var(--text); text-transform: uppercase; font-size: .82rem; }
+.game-tree-controls input { width: min(340px, 100%); min-width: 0; border: 1px solid var(--border); padding: 9px; background: #0a1822; color: var(--text); }
+.game-tier-list { display: grid; gap: 10px; margin-top: 10px; }
+.game-tier-row { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 10px; align-items: stretch; }
+.game-tier-heading { display: grid; place-items: center; border: 1px solid var(--border); background: var(--panel-alt); color: var(--accent-3); font-size: .7rem; }
+.game-tier-skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.game-skill-card { min-width: 0; display: grid; align-content: start; gap: 9px; padding: 12px; border: 1px solid var(--border); background: rgba(6,15,23,.75); }
+.game-skill-card.level-1 { border-left: 3px solid var(--accent); }
+.game-skill-card.level-2 { border-left: 3px solid var(--accent-3); }
+.game-skill-heading { display: grid; gap: 4px; }
+.game-skill-heading strong { overflow-wrap: anywhere; font-size: .78rem; }
+.game-skill-heading small, .game-skill-origin, .game-skill-upgrades { color: var(--muted); font-size: .58rem; overflow-wrap: anywhere; }
+.game-skill-levels { display: flex; flex-wrap: wrap; gap: 5px; }
+.game-skill-levels button { padding: 6px; font-size: .56rem; }
+.game-skill-origin { color: var(--accent-3); }
+.game-skill-upgrades { line-height: 1.4; }
+.curated-skill-editor { margin-top: 18px; border: 1px solid var(--border); background: rgba(13,24,34,.55); }
+.curated-skill-editor summary { padding: 13px; color: var(--muted); cursor: pointer; font-size: .66rem; letter-spacing: .08em; }
+.curated-skill-editor #skill-grid { padding: 0 12px 12px; }
+.gadget-slot-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 14px; }
+.gadget-slot-controls .source-note { margin-left: auto; }
+.gadget-slot-controls button:disabled { opacity: .45; cursor: not-allowed; }
+@media (max-width: 640px) { .game-tier-row { grid-template-columns: 1fr; } .game-tier-heading { justify-content: start; padding: 9px; } .game-tier-skills { grid-template-columns: 1fr; } .game-tree-controls { align-items: stretch; flex-direction: column; } .gadget-slot-controls .source-note { width: 100%; margin-left: 0; } }
+.raw-skill-list strong { font-size: .7rem; }
+@media (max-width: 900px) { .player-data-tools { grid-template-columns: 1fr 1fr; } .player-data-tools .primary-button { grid-column: 1 / -1; } }
+@media (max-width: 560px) { .player-data-tools, .player-facts, .player-equipped, .player-skills ul { grid-template-columns: 1fr; } .player-data-tools .primary-button { grid-column: auto; } }

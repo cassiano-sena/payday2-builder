@@ -1,9 +1,126 @@
 {
   "schemaVersion": 1,
-  "source": "Editable MVP dataset; values are placeholders and need_review.",
+  "source": "Generated MVP dataset based on Payday 2 wiki.",
   "items": [
-    {"id":"frag-grenade","name":"Frag Grenade","category":"throwable","tags":["loud","area_damage"],"description":"Area damage throwable.","effects":[{"stat":"damage","operation":"add","value":5}],"dataStatus":"placeholder"},
-    {"id":"concussion-grenade","name":"Concussion Grenade","category":"throwable","tags":["control","loud"],"description":"Temporary crowd-control option.","effects":[{"stat":"threat","operation":"add","value":4}],"dataStatus":"placeholder"},
-    {"id":"throwing-knife","name":"Throwing Knife","category":"throwable","tags":["stealth","concealable"],"description":"Quiet precision throwable.","effects":[{"stat":"concealment","operation":"add","value":3}],"dataStatus":"placeholder"}
+    {
+      "id": "frag-grenade",
+      "name": "Frag Grenade",
+      "category": "explosive",
+      "tags": [
+        "loud",
+        "damage"
+      ],
+      "description": "Standard explosive."
+    },
+    {
+      "id": "molotov",
+      "name": "Molotov Cocktail",
+      "category": "fire",
+      "tags": [
+        "loud",
+        "area_denial"
+      ],
+      "description": "Area of effect fire damage."
+    },
+    {
+      "id": "dynamite",
+      "name": "Dynamite",
+      "category": "explosive",
+      "tags": [
+        "loud",
+        "damage"
+      ],
+      "description": "Explosive, cannot be shot mid-air."
+    },
+    {
+      "id": "shuriken",
+      "name": "Shuriken",
+      "category": "projectile",
+      "tags": [
+        "stealth",
+        "poison"
+      ],
+      "description": "Poisonous throwing star."
+    },
+    {
+      "id": "javelin",
+      "name": "Javelin",
+      "category": "projectile",
+      "tags": [
+        "stealth",
+        "damage"
+      ],
+      "description": "High damage projectile."
+    },
+    {
+      "id": "throwing-axe",
+      "name": "Throwing Axe",
+      "category": "projectile",
+      "tags": [
+        "stealth",
+        "damage"
+      ],
+      "description": "Retrieval projectile."
+    },
+    {
+      "id": "throwing-knife",
+      "name": "Throwing Knife",
+      "category": "projectile",
+      "tags": [
+        "stealth",
+        "damage"
+      ],
+      "description": "Fast projectile."
+    },
+    {
+      "id": "concussion",
+      "name": "Concussion Grenade",
+      "category": "utility",
+      "tags": [
+        "loud",
+        "stun"
+      ],
+      "description": "Stuns enemies in a large radius."
+    },
+    {
+      "id": "smoke-bomb",
+      "name": "Smoke Bomb",
+      "category": "utility",
+      "tags": [
+        "stealth",
+        "cover"
+      ],
+      "description": "Creates a smoke screen. Part of Sicario."
+    },
+    {
+      "id": "incendiary",
+      "name": "Incendiary Grenade",
+      "category": "fire",
+      "tags": [
+        "loud",
+        "area_denial"
+      ],
+      "description": "Fire damage over time."
+    },
+    {
+      "id": "matryoshka",
+      "name": "Matryoshka Grenade",
+      "category": "explosive",
+      "tags": [
+        "loud",
+        "damage"
+      ],
+      "description": "Explosive doll."
+    },
+    {
+      "id": "viper",
+      "name": "Viper Grenade",
+      "category": "poison",
+      "tags": [
+        "loud",
+        "area_denial"
+      ],
+      "description": "Poison gas grenade."
+    }
   ]
 }

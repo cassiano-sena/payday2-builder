@@ -1,8 +1,147 @@
 {
   "schemaVersion": 1,
-  "source": "Editable MVP dataset; values are placeholders and need_review.",
+  "source": "Generated MVP dataset based on Payday 2 wiki.",
   "items": [
-    {"id":"utility-knife","name":"Utility Knife","category":"melee","tags":["concealable","fast"],"description":"Compact close-range tool.","effects":[{"stat":"concealment","operation":"add","value":2}],"dataStatus":"placeholder"},
-    {"id":"baseball-bat","name":"Baseball Bat","category":"melee","tags":["loud","impact"],"description":"Heavy impact melee option.","effects":[{"stat":"threat","operation":"add","value":6}],"dataStatus":"placeholder"}
+    {
+      "id": "weapon-butt",
+      "name": "Weapon Butt",
+      "category": "melee",
+      "tags": [
+        "fast",
+        "concealable"
+      ],
+      "description": "Fastest attack.",
+      "baseStats": {
+        "concealment": 30
+      }
+    },
+    {
+      "id": "electrical-brass-knuckles",
+      "name": "Electrical Brass Knuckles",
+      "category": "melee",
+      "tags": [
+        "stun",
+        "concealable"
+      ],
+      "description": "Stuns enemies.",
+      "baseStats": {
+        "concealment": 30
+      }
+    },
+    {
+      "id": "buzzer",
+      "name": "Buzzer",
+      "category": "melee",
+      "tags": [
+        "stun",
+        "concealable"
+      ],
+      "description": "Taser effect on enemies.",
+      "baseStats": {
+        "concealment": 30
+      }
+    },
+    {
+      "id": "ice-pick",
+      "name": "Ice Pick",
+      "category": "melee",
+      "tags": [
+        "damage",
+        "concealable"
+      ],
+      "description": "High damage and concealable.",
+      "baseStats": {
+        "concealment": 30
+      }
+    },
+    {
+      "id": "katana",
+      "name": "Katana",
+      "category": "melee",
+      "tags": [
+        "damage",
+        "range"
+      ],
+      "description": "High damage, fast swing.",
+      "baseStats": {
+        "concealment": 27
+      }
+    },
+    {
+      "id": "kunai",
+      "name": "Kunai Knife",
+      "category": "melee",
+      "tags": [
+        "poison",
+        "concealable"
+      ],
+      "description": "Poisons enemies.",
+      "baseStats": {
+        "concealment": 30
+      }
+    },
+    {
+      "id": "empty-palm",
+      "name": "Empty Palm Kata",
+      "category": "melee",
+      "tags": [
+        "fast",
+        "concealable"
+      ],
+      "description": "Fists.",
+      "baseStats": {
+        "concealment": 30
+      }
+    },
+    {
+      "id": "baseball-bat",
+      "name": "Baseball Bat",
+      "category": "melee",
+      "tags": [
+        "impact"
+      ],
+      "description": "Heavy impact.",
+      "baseStats": {
+        "concealment": 27
+      }
+    },
+    {
+      "id": "spear-freedom",
+      "name": "Spear of Freedom",
+      "category": "melee",
+      "tags": [
+        "range",
+        "damage"
+      ],
+      "description": "Long range.",
+      "baseStats": {
+        "concealment": 26
+      }
+    },
+    {
+      "id": "survival-tomahawk",
+      "name": "Survival Tomahawk",
+      "category": "melee",
+      "tags": [
+        "damage"
+      ],
+      "description": "High damage.",
+      "baseStats": {
+        "concealment": 28
+      }
+    },
+    {
+      "id": "utility-knife",
+      "name": "Utility Knife",
+      "category": "melee",
+      "tags": [
+        "fast",
+        "concealable"
+      ],
+      "description": "Standard knife.",
+      "baseStats": {
+        "concealment": 30
+      }
+    }
   ]
 }

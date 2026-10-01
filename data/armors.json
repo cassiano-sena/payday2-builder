@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "source": "https://payday.fandom.com/wiki/Armors",
+  "platform": "PC base inventory stats; excludes skill, perk deck, and crew bonuses.",
+  "items": [
+    {
+      "id": "two-piece-suit",
+      "name": "Two-Piece Suit",
+      "category": "Suit",
+      "description": "Highest concealment and movement; lowest protection.",
+      "baseStats": { "armor": 20, "concealment": 30, "speed": 36.8, "dodge": 5, "steadiness": 11, "stamina": 51.3 },
+      "unlock": "Unlocked by default",
+      "dataStatus": "community reference"
+    },
+    {
+      "id": "ballistic-vest",
+      "name": "Ballistic Vest",
+      "category": "Ballistic Vest",
+      "description": "Light protection with low movement penalty and visibility.",
+      "baseStats": { "armor": 60, "concealment": 23, "speed": 35, "dodge": -10, "steadiness": 12, "stamina": 47.5 },
+      "unlock": "Reputation 1",
+      "dataStatus": "community reference"
+    },
+    {
+      "id": "lightweight-ballistic-vest",
+      "name": "Lightweight Ballistic Vest",
+      "category": "Ballistic Vest",
+      "description": "A concealment-focused vest with modest protection.",
+      "baseStats": { "armor": 50, "concealment": 26, "speed": 35.9, "dodge": -5, "steadiness": 11.5, "stamina": 50 },
+      "unlock": "Reputation 7",
+      "dataStatus": "community reference"
+    },
+    {
+      "id": "heavy-ballistic-vest",
+      "name": "Heavy Ballistic Vest",
+      "category": "Ballistic Vest",
+      "description": "Hard-plate protection with a moderate mobility tradeoff.",
+      "baseStats": { "armor": 70, "concealment": 21, "speed": 33.3, "dodge": -15, "steadiness": 12.9, "stamina": 45 },
+      "unlock": "Reputation 12",
+      "dataStatus": "community reference"
+    },
+    {
+      "id": "flak-jacket",
+      "name": "Flak Jacket",
+      "category": "Jacket",
+      "description": "Higher protection with a medium movement penalty.",
+      "baseStats": { "armor": 90, "concealment": 18, "speed": 26.3, "dodge": -20, "steadiness": 13.8, "stamina": 42.5 },
+      "unlock": "Reputation 21",
+      "dataStatus": "community reference"
+    },
+    {
+      "id": "combined-tactical-vest",
+      "name": "Combined Tactical Vest",
+      "category": "Tactical Vest",
+      "description": "Heavy protection and load capacity at a steep mobility cost.",
+      "baseStats": { "armor": 110, "concealment": 12, "speed": 22.8, "dodge": -25, "steadiness": 15.7, "stamina": 40 },
+      "unlock": "Reputation 31",
+      "dataStatus": "community reference"
+    },
+    {
+      "id": "improved-combined-tactical-vest",
+      "name": "Improved Combined Tactical Vest",
+      "category": "Tactical Vest",
+      "description": "Maximum base protection; requires Iron Man Aced.",
+      "baseStats": { "armor": 170, "concealment": 1, "speed": 20.1, "dodge": -55, "steadiness": 22, "stamina": 35 },
+      "unlock": "Iron Man Aced",
+      "dataStatus": "community reference"
+    }
+  ]
+}
